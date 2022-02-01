@@ -20,7 +20,13 @@ public class GameController : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Run_1");
+        
      
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene("SceneMenu");
     }
 }

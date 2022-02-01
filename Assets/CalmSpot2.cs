@@ -16,7 +16,7 @@ public class CalmSpot2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        calming = false;
+        
     }
 
     // Update is called once per frame
@@ -33,7 +33,7 @@ public class CalmSpot2 : MonoBehaviour
         {
             zoom.GetComponent<CameraZoom>().smoothSpeed = -zoom.GetComponent<CameraZoom>().smoothSpeed;
             
-            panel.color = Color.Lerp(panel.color, Color.black, Time.deltaTime * speed);
+            
         }
     }
 
@@ -50,5 +50,6 @@ public class CalmSpot2 : MonoBehaviour
         calming = false;
         Calm.Stop();
         Spooky.Play();
+        panel.color = Color.Lerp(panel.color, Color.black, Time.deltaTime * speed);
     }
 }

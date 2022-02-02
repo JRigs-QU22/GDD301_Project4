@@ -80,7 +80,7 @@ public class Move : MonoBehaviour
         }
         if (collision.gameObject.tag == "Goal")
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene("Scene_End_Win");
         }
 
         if (collision.gameObject.tag == "QTE")

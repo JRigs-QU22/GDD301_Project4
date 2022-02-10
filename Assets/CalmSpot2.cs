@@ -26,7 +26,7 @@ public class CalmSpot2 : MonoBehaviour
         {
             zoom.GetComponent<CameraZoom>().smoothSpeed = -zoom.GetComponent<CameraZoom>().smoothSpeed;
             
-            panel.color = Color.Lerp(panel.color, Color.white, Time.deltaTime * speed);
+            panel.color = Color.Lerp(panel.color, Color.clear, Time.deltaTime * speed);
         }
 
         if (calming == false)

@@ -60,7 +60,7 @@ public class Breathing : MonoBehaviour
                 {
                     zoom.GetComponent<CameraZoom>().smoothSpeed = -4f;
                     breathing.Play();
-                    panel.color = Color.Lerp(panel.color, Color.white, Time.deltaTime * Speed);
+                    panel.color = Color.Lerp(panel.color, Color.clear, Time.deltaTime * Speed);
                 }
             }
         

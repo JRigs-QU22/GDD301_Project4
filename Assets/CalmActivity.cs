@@ -13,45 +13,76 @@ public class CalmActivity : MonoBehaviour
     public float speed;
     public AudioSource Spooky;
     public AudioSource Calm;
+    public AudioSource ScaredBreath;
+    public AudioSource CalmBreath;
     public bool calming = false;
     public Camera zoom;
+
+   public CameraShake Shake;
+
+  
 
     // Start is called before the first frame update
     void Start()
     {
-        Breathing = false;
+        
+        //Breathing = false;
+        Spooky.Play();
+        Calm.Stop();
         BreathCount = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         if (Input.GetKey(KeyCode.Space) && BreathCount > 0)
         {
             
             Breathing = true;
+            panel.color = Color.Lerp(panel.color, Color.clear, Time.deltaTime * speed);
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Breathing == true)
         {
+            Shake.enabled = false;
+            Calm.Play();
+            Spooky.Stop();
+            CalmBreath.Play();
+            ScaredBreath.Stop();
+            Debug.Log("Calm");
+            zoom.GetComponent<CameraZoom>().smoothSpeed = -zoom.GetComponent<CameraZoom>().smoothSpeed;
+
+        }
+            if (Input.GetKeyUp(KeyCode.Space))
+        {
+            
+            Shake.enabled = true;
             Breathing = false;
             BreathCount = BreathCount - 1;
+            Calm.Stop();
+            Spooky.Play();
+            CalmBreath.Stop();
+            ScaredBreath.Play();
+            Debug.Log("spooky)");
+            zoom.GetComponent<CameraZoom>().smoothSpeed = -zoom.GetComponent<CameraZoom>().smoothSpeed;
         }
 
         if (Breathing == true)
         {
-            zoom.GetComponent<CameraZoom>().smoothSpeed = -zoom.GetComponent<CameraZoom>().smoothSpeed;
+            
 
             panel.color = Color.Lerp(panel.color, Color.clear, Time.deltaTime * speed);
 
-            Calm.Play();
-            Spooky.Stop();
+            
+            
+            
         }
         if (Breathing == false)
         {
-            zoom.GetComponent<CameraZoom>().smoothSpeed = -zoom.GetComponent<CameraZoom>().smoothSpeed;
+            
 
-            Calm.Stop();
-            Spooky.Play();
+            
         }
 
         if (BreathCount < 0)
@@ -59,4 +90,5 @@ public class CalmActivity : MonoBehaviour
             BreathCount = 0;
         }
     }
+
 }

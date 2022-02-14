@@ -5,12 +5,35 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour {
 
 	Vector3 cameraInitialPosition;
-	public float shakeMagnetude = 0.05f, shakeTime = 0.5f;
+	public float shakeMagnetude, shakeTime;
 	public Camera mainCamera;
+    public float IncreaseTimer = 3.0f;
+    public float Countdown;
 
+    public void Start()
+    {
+        shakeMagnetude = 0;
+        shakeTime = 0;
+        Countdown = IncreaseTimer;
+    }
     public void Update()
     {
+        Countdown -= Time.deltaTime;
+        if (Countdown < 0)
+        {
+            shakeMagnetude = shakeMagnetude + 0.01f;
+            shakeTime = shakeTime + 0.01f;
+            Countdown = 3.0f;
+        }
         StartCameraShaking();
+
+        if(this.enabled == false)
+        {
+            shakeMagnetude = 0f;
+            shakeTime = 0f;
+            Countdown = 3.0f;
+        } 
+        
     }
     public void ShakeIt()
 	{

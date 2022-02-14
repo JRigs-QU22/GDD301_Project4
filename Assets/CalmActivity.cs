@@ -15,11 +15,13 @@ public class CalmActivity : MonoBehaviour
     public AudioSource Calm;
     public AudioSource ScaredBreath;
     public AudioSource CalmBreath;
+    public AudioSource QTE;
     public bool calming = false;
     public Camera zoom;
 
    public CameraShake Shake;
-
+    public Move Movement;
+    public Text Rests;
   
 
     // Start is called before the first frame update
@@ -30,13 +32,14 @@ public class CalmActivity : MonoBehaviour
         Spooky.Play();
         Calm.Stop();
         BreathCount = 3;
+        Rests.text = "Rests Available: " + BreathCount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
 
+        Rests.text = "Rests Available: " + BreathCount;
         if (Input.GetKey(KeyCode.Space) && BreathCount > 0)
         {
             
@@ -45,6 +48,8 @@ public class CalmActivity : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && Breathing == true)
         {
+            Movement.enabled = false;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             Shake.enabled = false;
             Calm.Play();
             Spooky.Stop();
@@ -56,8 +61,11 @@ public class CalmActivity : MonoBehaviour
         }
             if (Input.GetKeyUp(KeyCode.Space))
         {
-            
+            Movement.enabled = true;
             Shake.enabled = true;
+            Shake.shakeTime = 0f;
+            Shake.shakeMagnetude = 0f;
+            Shake.Countdown = 3.0f;
             Breathing = false;
             BreathCount = BreathCount - 1;
             Calm.Stop();
@@ -73,7 +81,7 @@ public class CalmActivity : MonoBehaviour
             
 
             panel.color = Color.Lerp(panel.color, Color.clear, Time.deltaTime * speed);
-
+            
             
             
             
@@ -89,6 +97,37 @@ public class CalmActivity : MonoBehaviour
         {
             BreathCount = 0;
         }
+        if (BreathCount > 3)
+        {
+            BreathCount = 3;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.tag == "QTE")
+        {
+
+            Debug.Log("Breathe");
+        }
+        if (collision.gameObject.tag == "QTE")
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                zoom.GetComponent<CameraZoom>().smoothSpeed = -4f;
+                QTE.Play();
+                BreathCount = BreathCount + 1;
+
+                //panel.color = Color.Lerp(panel.color, Color.clear, Time.deltaTime * Speed);
+            }
+        }
+
+
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        zoom.GetComponent<CameraZoom>().smoothSpeed = 0.2f;
     }
 
 }

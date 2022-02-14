@@ -153,6 +153,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 648136364}
+  - {fileID: 977343054}
   m_Father: {fileID: 754644546}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -377,14 +378,14 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2987e3d57dec5374bb72fe63c5e542be, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
-  m_Pitch: 1
+  m_Volume: 1
+  m_Pitch: 0.77
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
+  Priority: 0
+  DopplerLevel: 3.06
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -478,6 +479,7 @@ MonoBehaviour:
   Hit: {fileID: 320775792}
   isMoving: 0
   speed: 1
+  MoveSpeed: 1
 --- !u!61 &320775795
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -605,6 +607,8 @@ MonoBehaviour:
   shakeMagnetude: 0.05
   shakeTime: 0.5
   mainCamera: {fileID: 1913245434}
+  IncreaseTimer: 3
+  Countdown: 0
 --- !u!82 &320775800
 AudioSource:
   m_ObjectHideFlags: 0
@@ -717,14 +721,17 @@ MonoBehaviour:
   BreathCount: 0
   BreathTimer: 0
   panel: {fileID: 609869271}
-  speed: 0.15
+  speed: 0.05
   Spooky: {fileID: 1913245437}
   Calm: {fileID: 320775800}
   ScaredBreath: {fileID: 841255060}
   CalmBreath: {fileID: 320775802}
+  QTE: {fileID: 1162460528}
   calming: 0
   zoom: {fileID: 1913245434}
   Shake: {fileID: 320775799}
+  Movement: {fileID: 320775794}
+  Rests: {fileID: 977343055}
 --- !u!82 &320775802
 AudioSource:
   m_ObjectHideFlags: 0
@@ -947,8 +954,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.026500002, y: 0.9375834}
   m_AnchorMax: {x: 0.026500002, y: 0.9375834}
-  m_AnchoredPosition: {x: -8, y: -17.669998}
-  m_SizeDelta: {x: 400, y: 55.92}
+  m_AnchoredPosition: {x: -8, y: -6.5399933}
+  m_SizeDelta: {x: 400, y: 35.31}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &648136365
 MonoBehaviour:
@@ -1316,7 +1323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1346,7 +1353,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!224 &754644546
 RectTransform:
@@ -2053,6 +2060,85 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &977343053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 977343054}
+  - component: {fileID: 977343056}
+  - component: {fileID: 977343055}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &977343054
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977343053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 63558522}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.29125002, y: 0.83111125}
+  m_AnchorMax: {x: 0.29125002, y: 0.83111125}
+  m_AnchoredPosition: {x: 0.8500061, y: 7.3046417}
+  m_SizeDelta: {x: 441.3, y: 100.83}
+  m_Pivot: {x: 0.5, y: 0.6220334}
+--- !u!114 &977343055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977343053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.28627452, g: 0.74509805, b: 0.73333335, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: a8fb799ec9e13364a980a68dbf438423, type: 3}
+    m_FontSize: 35
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 45
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Rests Available: '
+--- !u!222 &977343056
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977343053}
+  m_CullTransparentMesh: 1
 --- !u!1 &979594058
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,7 +2187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2167,6 +2253,7 @@ GameObject:
   - component: {fileID: 1162460524}
   - component: {fileID: 1162460523}
   - component: {fileID: 1162460528}
+  - component: {fileID: 1162460529}
   m_Layer: 0
   m_Name: Breathing
   m_TagString: QTE
@@ -2181,7 +2268,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1162460522}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 592c1666e18659c479ce749f2ae332df, type: 3}
   m_Name: 
@@ -2399,6 +2486,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1162460529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162460522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f2a656d235f2c548a8089547edd09f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0
+  speed: 2
+  breathing: {fileID: 1162460528}
+  zoom: {fileID: 1913245434}
 --- !u!1 &1526123382
 GameObject:
   m_ObjectHideFlags: 0

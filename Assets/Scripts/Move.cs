@@ -13,6 +13,7 @@ public class Move : MonoBehaviour
     public AudioSource Hit;
     public bool isMoving = false;
     public float speed;
+    public float MoveSpeed;
 
     void Start()
     {
@@ -26,28 +27,28 @@ public class Move : MonoBehaviour
         {
             isMoving = true;
             //Walk.Play();
-            GetComponent<Rigidbody2D>().velocity = new Vector2(2, 0);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(MoveSpeed, 0);
             
         }
         else if (Input.GetKey(KeyCode.A)) //if a key is pressed, move in left direction
         {
             isMoving = true;
             //Walk.Play();
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-2, 0);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-MoveSpeed, 0);
             
         }
         else if (Input.GetKey(KeyCode.W)) //if spacebar is pressed, move in up direction
         {
             isMoving = true;
             //Walk.Play();
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 2);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, MoveSpeed);
             
         }
         else if (Input.GetKey(KeyCode.S)) //if down arrow key is pressed, move in down direction
         {
             isMoving = true;
             //Walk.Play();
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -2);
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -MoveSpeed);
             
         }
         else

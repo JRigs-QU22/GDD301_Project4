@@ -716,7 +716,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Reach the green flag before
+  m_text: 'Reach the star before
 
     time runs out
 
@@ -731,7 +731,7 @@ MonoBehaviour:
 
     R = restart
 
-    Space = action'
+    Space = take a breather'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 93d95c0055ca6a5439dfa4f35e220781, type: 2}
   m_sharedMaterial: {fileID: 533780026408502335, guid: 93d95c0055ca6a5439dfa4f35e220781,

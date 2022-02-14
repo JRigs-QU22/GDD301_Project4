@@ -22,23 +22,30 @@ public class CalmActivity : MonoBehaviour
    public CameraShake Shake;
     public Move Movement;
     public Text Rests;
+    public float volumetimer;
   
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        volumetimer = 3f;
         //Breathing = false;
         Spooky.Play();
         Calm.Stop();
         BreathCount = 3;
         Rests.text = "Rests Available: " + BreathCount;
+        Spooky.volume = 0.05f;       
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        volumetimer -= Time.deltaTime;
+        if (volumetimer < 0)
+        {
+            Spooky.volume = Spooky.volume + 0.05f;
+            volumetimer = 1.5f;
+        }
         Rests.text = "Rests Available: " + BreathCount;
         if (Input.GetKey(KeyCode.Space) && BreathCount > 0)
         {
@@ -74,6 +81,8 @@ public class CalmActivity : MonoBehaviour
             ScaredBreath.Play();
             Debug.Log("spooky)");
             zoom.GetComponent<CameraZoom>().smoothSpeed = -zoom.GetComponent<CameraZoom>().smoothSpeed;
+            Spooky.volume = 0.05f;
+            volumetimer = 1.5f;
         }
 
         if (Breathing == true)

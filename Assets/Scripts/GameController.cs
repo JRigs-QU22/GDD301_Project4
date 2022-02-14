@@ -18,9 +18,9 @@ public class GameController : MonoBehaviour
         
     }
 
-    public void LoadScene()
+    public void Level1()
     {
-        SceneManager.LoadScene("Run_1");
+        SceneManager.LoadScene(1);
         
      
     }
